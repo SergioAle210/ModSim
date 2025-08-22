@@ -40,3 +40,35 @@ def load_data():
     }
     
     return {'discrete': discrete, 'continuous': continuous}
+
+
+# Código para ejecutar cuando se llama el script directamente
+if __name__ == "__main__":
+    print("Cargando datos de simulación...")
+    data = load_data()
+    
+    print("=== Datos Discretos ===")
+    print(f"Timestamps: {len(data['discrete']['timestamps'])} puntos (días 0-20)")
+    print(f"Infecciones: {len(data['discrete']['infections'])} valores")
+    print(f"Datos de agentes: {len(data['discrete']['agent_data'])} agentes")
+    print(f"Primeros 10 valores de infecciones: {data['discrete']['infections'][:10]}")
+    
+    print("\n=== Datos Continuos ===")
+    print(f"Timestamps: {len(data['continuous']['timestamps'])} puntos")
+    print(f"Infecciones: {len(data['continuous']['infections'])} valores")
+    print(f"Datos de agentes: {len(data['continuous']['agent_data'])} agentes")
+    print(f"Rango de timestamps: {data['continuous']['timestamps'][0]:.2f} - {data['continuous']['timestamps'][-1]:.2f}")
+    
+    print("\n=== Vista previa de datos de agentes (discreto) ===")
+    print(data['discrete']['agent_data'].head())
+    
+    print("\n=== Distribución de edad ===")
+    print(data['discrete']['agent_data']['age'].value_counts())
+    
+    print("\n=== Distribución de ocupación ===")
+    print(data['discrete']['agent_data']['occupation'].value_counts())
+    
+    print("\n=== Estado de vacunación ===")
+    print(data['discrete']['agent_data']['vaccinated'].value_counts())
+    
+    print("\n¡Datos cargados exitosamente!")
