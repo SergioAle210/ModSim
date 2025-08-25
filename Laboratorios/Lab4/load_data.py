@@ -40,3 +40,4 @@ def load_data():
     }
     
     return {'discrete': discrete, 'continuous': continuous}
+
